@@ -2,11 +2,11 @@
 Prerequisite functions to help and assert inputs and outputs condition and type
 """
 
-from typing import TypeVar, Collection, Type, Iterable, Union, no_type_check
+from typing import TypeVar, Collection, Type, Union, no_type_check, Sequence
 
 # create a type var to then tests if input type is the same as output type for example
-type_x = TypeVar("type_x")
-types_xy = TypeVar("types_xy", bound=Iterable)
+X = TypeVar("X")
+XY = TypeVar("XY", bound=Sequence)
 
 
 # conditions
@@ -48,7 +48,7 @@ def require_all_in_all(
 
 # types
 @no_type_check
-def require_type(variable: type_x, expected_type: Type) -> type_x:
+def require_type(variable: X, expected_type: Type) -> X:
     """
     Require that checks a variable type
 
@@ -65,7 +65,7 @@ def require_type(variable: type_x, expected_type: Type) -> type_x:
 
 
 @no_type_check
-def require_one_of_types(variable: type_x, allowed_types: types_xy) -> type_x:
+def require_one_of_types(variable: X, allowed_types: XY) -> X:
     """
     Require that checks that a variable has an allowed type
 
@@ -82,7 +82,7 @@ def require_one_of_types(variable: type_x, allowed_types: types_xy) -> type_x:
 
 
 @no_type_check
-def require_all_of_type(iterable: types_xy, expected_type: Type) -> types_xy:
+def require_all_of_type(iterable: XY, expected_type: Type) -> XY:
     """
     Require to tests that all variables in iterable are of expected type
 
@@ -99,9 +99,7 @@ def require_all_of_type(iterable: types_xy, expected_type: Type) -> types_xy:
 
 
 @no_type_check
-def require_type_or_none(
-    variable: type_x, expected_type: Type
-) -> Union[type_x, None]:
+def require_type_or_none(variable: X, expected_type: Type) -> Union[X, None]:
     """
     Require to tests if a variable is of some type or None
 
