@@ -18,5 +18,14 @@ test:
 package: clean_dist
 	python setup.py sdist
 
-format:
+vulture:
+	vulture module/
+
+isort:
+	isort -rc .
+
+unused_imports:
+	importchecker .
+
+format: isort unused_imports
 	black .

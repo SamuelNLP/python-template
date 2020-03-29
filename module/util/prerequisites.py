@@ -2,60 +2,65 @@
 Prerequisite functions to help and assert inputs and outputs condition and type
 """
 
-from typing import TypeVar, Collection, Type, Union, no_type_check, Sequence
+from typing import Iterable, Type, TypeVar, Union, no_type_check
 
 # create a type var to then tests if input type is the same as output type for example
-X = TypeVar("X")
-XY = TypeVar("XY", bound=Sequence)
+type_x = TypeVar("type_x")
+type_y = TypeVar("type_y", bound=Iterable)
 
 
 # conditions
 def require(condition: bool, message: str = "Requirement failed!"):
     """
-    Require for a condition
+    Test one condition
 
-    :param condition: bool condition
-    :param message: message to display in case of False condition
+    Args:
+        condition (bool): boolean condition
+        message (str): custom message to add to the assert
     """
     assert condition, message
 
 
 def require_one_in_all(
-    collection_conditions: Collection,
+    collection_conditions: Iterable[bool],
     message: str = "Not even one requirement met!",
 ):
     """
-    Require for a condition in a collection
+    Require one condition in a collection of conditions
 
-    :param collection_conditions: collection of conditions
-    :param message: message to display in case no True condition
+    Args:
+        collection_conditions (Iterable): conditions to be tested
+        message (str): custom message to add to the assert
     """
     assert any(collection_conditions), message
 
 
 def require_all_in_all(
-    collection_conditions: Collection,
+    collection_conditions: Iterable[bool],
     message: str = "Not all requirements met!",
 ):
     """
-    Require for a condition in a collection
+    Require all conditions in a collection of conditions
 
-    :param collection_conditions: collection of conditions
-    :param message: message to display in case of False condition
+    Args:
+        collection_conditions (Iterable): conditions to be tested
+        message (str): custom message to add to the assert
     """
     assert all(collection_conditions), message
 
 
 # types
 @no_type_check
-def require_type(variable: X, expected_type: Type) -> X:
+def require_type(variable: type_x, expected_type: Type) -> type_x:
     """
-    Require that checks a variable type
+    Requite type of variable
 
-    :param variable: variable to tests
-    :param expected_type: expected variable type
+    Args:
+        variable: variable to be type tested
+        expected_type: type to be expected
 
-    :return: the same inputted variable
+    Returns:
+        If assert is True, it returns the variable
     """
     assert isinstance(
         variable, expected_type
@@ -65,14 +70,16 @@ def require_type(variable: X, expected_type: Type) -> X:
 
 
 @no_type_check
-def require_one_of_types(variable: X, allowed_types: XY) -> X:
+def require_one_of_types(variable: type_x, allowed_types: type_y) -> type_x:
     """
-    Require that checks that a variable has an allowed type
+    Require one of the types specified
 
-    :param variable: variable to tests
-    :param allowed_types: iterable with the allowed types
+    Args:
+        variable: variable to be type tested
+        allowed_types: types allowed
 
-    :return: the same inputted variable
+    Returns:
+        If assert is True, it returns the variable
     """
     assert any(
         isinstance(variable, allowed_type) for allowed_type in allowed_types
@@ -82,15 +89,18 @@ def require_one_of_types(variable: X, allowed_types: XY) -> X:
 
 
 @no_type_check
-def require_all_of_type(iterable: XY, expected_type: Type) -> XY:
+def require_all_of_type(iterable: type_y, expected_type: Type) -> type_y:
     """
-    Require to tests that all variables in iterable are of expected type
+    Require all objects from an iterable to be of the type specified
 
-    :param iterable: iterable with variables to tests
-    :param expected_type: expected type to tests
+    Args:
+        iterable: iterable of objects to be type tested
+        expected_type: type allowed
 
-    :return: the same inputted iterable
+    Returns:
+        If assert is True, it returns the iterable passed
     """
+
     assert all(
         isinstance(variable, expected_type) for variable in iterable
     ), f"Expected all values in variable to be of type {expected_type}!"
@@ -99,14 +109,18 @@ def require_all_of_type(iterable: XY, expected_type: Type) -> XY:
 
 
 @no_type_check
-def require_type_or_none(variable: X, expected_type: Type) -> Union[X, None]:
+def require_type_or_none(
+    variable: type_x, expected_type: Type
+) -> Union[type_x, None]:
     """
-    Require to tests if a variable is of some type or None
+    Require a type or None
 
-    :param variable: variable to tests
-    :param expected_type: expected type of variable
+    Args:
+        variable: variable to be type tested
+        expected_type: type allowed apart from None
 
-    :return: the same inputted variable
+    Returns:
+        If assert is True, it returns the iterable passed
     """
     if variable is None:
         return None
