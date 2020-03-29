@@ -34,4 +34,14 @@ export_reqs:
 	pip-chill --no-version > requirements.txt
 
 install_reqs:
-	pip install -r requirements.txt
+	pip install pip --upgrade
+	pip install -r requirements.txt --upgrade
+
+install_jupyter:
+	pip install jupyter
+	pip install jupyter_contrib_nbextensions
+	pip install jupyter_nbextensions_configurator
+	jupyter contrib nbextension install --user
+	jupyter nbextensions_configurator enable --user
+	pip install autopep8
+	pip install jupyterthemes
