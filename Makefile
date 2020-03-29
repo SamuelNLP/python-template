@@ -29,3 +29,9 @@ unused_imports:
 
 format: isort unused_imports
 	black .
+
+export_reqs:
+	pip-chill --no-version > requirements.txt
+
+install_reqs:
+	pip install -r requirements.txt
