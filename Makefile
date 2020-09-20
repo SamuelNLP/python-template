@@ -10,7 +10,13 @@ clean_tests:
 clean_mypy:
 	rm -rf .mypy_cache
 
-clean: clean_dist clean_mypy clean_tests
+clean_notebooks:
+	rm -rf .ipynb_checkpoints
+
+clean: clean_dist clean_mypy clean_tests clean_notebooks
+
+clean_pip:
+	pip freeze | xargs pip uninstall -y
 
 test:
 	tox
@@ -27,7 +33,7 @@ isort:
 unused_imports:
 	importchecker .
 
-format: isort unused_imports
+format: isort
 	black .
 
 export_reqs:

@@ -5,7 +5,9 @@ isort
 mypy
 pip-chill
 pre-commit
-pytest-datadir
+pycln
+pylint
 pytest-xdist
+snakeviz
 tox
 vulture
