@@ -23,7 +23,8 @@ def require(condition: bool, message: str = "Requirement failed!"):
         custom message to add to the assert
 
     """
-    assert condition, message
+    if not condition:
+        raise ValueError(message)
 
 
 def require_one_in_all(
@@ -41,7 +42,8 @@ def require_one_in_all(
         custom message to add to the assert
 
     """
-    assert any(collection_conditions), message
+    if not any(collection_conditions):
+        raise ValueError(message)
 
 
 def require_all_in_all(
@@ -58,7 +60,8 @@ def require_all_in_all(
         custom message to add to the assert
 
     """
-    assert all(collection_conditions), message
+    if not all(collection_conditions):
+        raise ValueError(message)
 
 
 # types
@@ -80,9 +83,8 @@ def require_type(variable: TypeX, expected_type: Type) -> TypeX:
         If assert is True, it returns the variable
 
     """
-    assert isinstance(
-        variable, expected_type
-    ), f"Expected type {expected_type}, got {type(variable)}!"
+    if not isinstance(variable, expected_type):
+        raise TypeError(f"Expected type {expected_type}, got {type(variable)}!")
 
     return variable
 
@@ -105,9 +107,10 @@ def require_one_of_types(variable: TypeX, allowed_types: TypeY) -> TypeX:
         If assert is True, it returns the variable
 
     """
-    assert any(
-        isinstance(variable, allowed_type) for allowed_type in allowed_types
-    ), f"Expected one of {allowed_types} types, got {type(variable)}!"
+    if not any(isinstance(variable, allowed_type) for allowed_type in allowed_types):
+        raise TypeError(
+            f"Expected one of {allowed_types} types in variable, got {type(variable)}!"
+        )
 
     return variable
 
@@ -130,9 +133,10 @@ def require_all_of_type(iterable: TypeY, expected_type: Type) -> TypeY:
         If assert is True, it returns the iterable passed
 
     """
-    assert all(
-        isinstance(variable, expected_type) for variable in iterable
-    ), f"Expected all values in variable to be of type {expected_type}!"
+    if not all(isinstance(variable, expected_type) for variable in iterable):
+        raise TypeError(
+            f"Expected all values in variable to be of type {expected_type}!"
+        )
 
     return iterable
 
@@ -157,9 +161,8 @@ def require_all_same_type(
         If assert is True, it returns the iterable passed
 
     """
-    assert (
-        len(set(map(type, iterable))) > 1
-    ), "All elements of iterable must be of the same type."
+    if len(set(map(type, iterable))) > 1:
+        raise TypeError("All elements of iterable must be of the same type.")
 
     if allowed_types is not None:
         require_one_of_types(set(iterable).pop(), allowed_types)
@@ -187,9 +190,4 @@ def require_type_or_none(variable: TypeX, expected_type: Type) -> Union[TypeX, N
     """
     if variable is None:
         return None
-
-    assert isinstance(
-        variable, expected_type
-    ), f"Expected type {expected_type}, got {type(variable)}!"
-
-    return variable
+    return require_type(variable, expected_type)
