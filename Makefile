@@ -36,7 +36,7 @@ mypy:
 	mypy . --ignore-missing-imports
 
 isort:
-	isort -rc .
+	isort .
 
 format: isort
 	black .

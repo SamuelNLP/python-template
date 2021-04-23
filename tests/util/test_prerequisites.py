@@ -2,6 +2,8 @@
 Test prerequisites file
 """
 
+from typing import Dict
+
 import pytest
 
 from module.util.prerequisites import (
@@ -11,7 +13,7 @@ from module.util.prerequisites import (
     require_one_in_all,
     require_one_of_types,
     require_type,
-    require_type_or_none,
+    require_type_or_none, require_all_same_type,
 )
 
 
@@ -27,6 +29,12 @@ def test_require_conditions():
     with pytest.raises(ValueError):
         require("a" == "b")
 
+    with pytest.raises(ValueError):
+        require_one_in_all([1 < 0, False])
+
+    with pytest.raises(ValueError):
+        require_all_in_all([1 > 0, False, "a" + "b" == "ab"])
+
 
 def test_variable_types():
     """
@@ -36,8 +44,22 @@ def test_variable_types():
     require_type(1, int)
     require_one_of_types(1, (int, float))
     require_all_of_type([1, 2, 3, 0, 1 + 2], int)
+    require_all_same_type([1, 2, 3])
+    require_all_same_type([1, 2, 3], [int])
     require_type_or_none(None, str)
     require_type_or_none(21, int)
 
     with pytest.raises(TypeError):
-        _ = require_type("test", int)
+        require_type("test", int)
+
+    with pytest.raises(TypeError):
+        require_all_same_type(["test", 1])
+
+    with pytest.raises(TypeError):
+        require_one_of_types(1, (Dict, str))
+
+    with pytest.raises(TypeError):
+        require_all_of_type([1, 2, 3, "a", 1 + 2], int)
+
+    with pytest.raises(TypeError):
+        require_type_or_none(1, str)
