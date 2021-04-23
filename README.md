@@ -1,4 +1,6 @@
 # python-template
+[![GitHub license](https://img.shields.io/github/license/SamuelNLP/pyhon-template)](https://github.com/SamuelNLP/pyhon-template/blob/master/LICENSE)
+[![codecov](https://app.codecov.io/gh/SamuelNLP/pyhon-template/branch/master/graph/badge.svg)](https://app.codecov.io/gh/SamuelNLP/pyhon-template)
 
 This is a skeleton repo to be used as a python template for future projects.
 
