@@ -57,19 +57,19 @@ make install_jupyter
 
 Activate:
   
-- jupyter-autopep8
-- Spellchecker
-- Notebook web notifications
-- Skip traceback
-- Scratchpad notebook extension
-- Jupyter notebook snippets menu
-- init_cell
-- Execute time extension
-- Variable Inspector
-- Hinterland
+    - jupyter-autopep8
+    - Spellchecker
+    - Notebook web notifications
+    - Skip traceback
+    - Scratchpad notebook extension
+    - Jupyter notebook snippets menu
+    - init_cell
+    - Execute time extension
+    - Variable Inspector
+    - Hinterland
 
 ### Jupyter themes
 
-- `jt -l` to see available themes
-- `jt -t <name of theme>` to select a theme
-- `jt -r` to revert to original theme
+    - `jt -l` to see available themes
+    - `jt -t <name of theme>` to select a theme
+    - `jt -r` to revert to original theme
