@@ -12,11 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - uses: codecov/codecov-action@v1
-      with:
-        fail_ci_if_error: true
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
@@ -26,4 +21,8 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Test
-      run: make test
+      run: make test_w_coverage
+
+    - uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
