@@ -1,4 +1,5 @@
 # python-template
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9a6c9cdfe8c94c7584b84da80f97ccc8)](https://app.codacy.com/gh/SamuelNLP/pyhon-template?utm_source=github.com&utm_medium=referral&utm_content=SamuelNLP/pyhon-template&utm_campaign=Badge_Grade_Settings)
 [![GitHub license](https://img.shields.io/github/license/SamuelNLP/pyhon-template)](https://github.com/SamuelNLP/pyhon-template/blob/master/LICENSE)
 [![codecov](https://codecov.io/gh/SamuelNLP/pyhon-template/branch/master/graph/badge.svg?token=5CGG6XOCIW)](https://codecov.io/gh/SamuelNLP/pyhon-template)
 
