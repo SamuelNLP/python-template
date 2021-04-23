@@ -1,6 +1,4 @@
-"""
-Prerequisite functions to help and assert inputs and outputs condition and type
-"""
+"""Prerequisite functions to help and assert inputs and outputs condition and type."""
 
 from typing import Iterable, Optional, Type, TypeVar, Union, no_type_check
 
