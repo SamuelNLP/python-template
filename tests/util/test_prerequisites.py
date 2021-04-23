@@ -1,6 +1,4 @@
-"""
-Test prerequisites file
-"""
+"""Test prerequisites file"""
 
 from typing import Dict
 

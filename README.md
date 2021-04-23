@@ -20,9 +20,9 @@ pre-commit install
 Afterwards, whenever you try to commit changes, the pre-commit hooks
 will run and inform you of possible warnings/errors that must be fixed.
 
-
 ## Utilities
-- Profiling with cProfile and snakeviz:
+  - Profiling with cProfile and snakeviz:
+
 ```bash
 # using cProfile
 python -m cProfile -o foo.stats foo.py
@@ -55,19 +55,18 @@ make install_jupyter
 ```
 
 Activate:
- - jupyter-autopep8
- - Spellchecker
- - Notebook web notifications
- - Skip traceback
- - Scratchpad notebook extension
- - Jupyter notebook snippets menu
- - init_cell
- - Execute time extension
- - Variable Inspector
- - Hinterland
+  - jupyter-autopep8
+  - Spellchecker
+  - Notebook web notifications
+  - Skip traceback
+  - Scratchpad notebook extension
+  - Jupyter notebook snippets menu
+  - init_cell
+  - Execute time extension
+  - Variable Inspector
+  - Hinterland
 
 ### Jupyter themes
-
-- `jt -l` to see available themes
-- `jt -t <name of theme>` to select a theme
-- `jt -r` to revert to original theme
+  - `jt -l` to see available themes
+  - `jt -t <name of theme>` to select a theme
+  - `jt -r` to revert to original theme
