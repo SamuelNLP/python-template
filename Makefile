@@ -4,7 +4,7 @@ clean_dist:
 	rm -rf dist *.egg-info
 
 clean_tests:
-	rm -rf .pytest_cache .tox
+	rm -rf .pytest_cache .tox .coverage htmlcov test_report_36.xml
 	py3clean .
 
 clean_mypy:
@@ -18,8 +18,13 @@ clean: clean_dist clean_mypy clean_tests clean_notebooks
 clean_pip:
 	pip freeze | xargs pip uninstall -y
 
+reinstall_pip: clean_pip install_reqs
+
 test:
 	tox
+
+test_w_coverage:
+	pytest -v -n 3 --junitxml=test_report_36.xml --cov-report html --cov=module tests/
 
 package: clean_dist
 	python setup.py sdist
@@ -27,11 +32,11 @@ package: clean_dist
 vulture:
 	vulture module/
 
+mypy:
+	mypy . --ignore-missing-imports
+
 isort:
 	isort -rc .
-
-unused_imports:
-	importchecker .
 
 format: isort
 	black .

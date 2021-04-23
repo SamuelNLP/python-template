@@ -24,7 +24,7 @@ def test_require_conditions():
     require_one_in_all([1 > 0, False])
     require_all_in_all([1 > 0, True, "a" + "b" == "ab"])
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         require("a" == "b")
 
 
@@ -39,5 +39,5 @@ def test_variable_types():
     require_type_or_none(None, str)
     require_type_or_none(21, int)
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(TypeError):
         _ = require_type("test", int)

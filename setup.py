@@ -5,7 +5,7 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-_PACKAGE_NAME = "python_template"
+_PACKAGE_NAME = "module"
 
 BASE_DIR = Path(__file__).resolve().parent / _PACKAGE_NAME
 _VERSION_RE = re.compile(r"__version__\s+=\s+(?P<version>.*)")
