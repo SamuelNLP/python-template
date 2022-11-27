@@ -36,7 +36,7 @@
 .idea/**/libraries
 
 # Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
+# When using Gradle or Maven with auto-import, you should exclude the_baby files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
 # .idea/modules.xml
@@ -273,3 +273,4 @@ pip-selfcheck.json
 *mies
 
 # End of https://www.gitignore.io/api/test,python,pycharm+all,jupyternotebook
+/test_report.xml

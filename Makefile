@@ -16,30 +16,30 @@ clean_notebooks:
 clean: clean_dist clean_mypy clean_tests clean_notebooks
 
 clean_pip:
-	pip freeze | xargs pip uninstall -y
+	poetry run pip freeze | xargs pip uninstall -y
 
 reinstall_pip: clean_pip install_reqs
 
 test:
-	tox
+	poetry run pytest -n 4 -p no:cacheprovider
 
 test_w_coverage:
-	pytest -v -n 3 --junitxml=test_report_36.xml --cov-report html --cov=module tests/
+	poetry run pytest -v -n 3 --junitxml=test_report.xml --cov-report html --cov=module tests/
 
 package: clean_dist
 	python setup.py sdist
 
 vulture:
-	vulture module/
+	poetry run vulture module/
 
 mypy:
-	mypy . --ignore-missing-imports
+	poetry run mypy . --ignore-missing-imports
 
 isort:
-	isort .
+	poetry run isort .
 
 format: isort
-	black .
+	poetry run black .
 
 export_reqs:
 	pip-chill --no-version > requirements.txt

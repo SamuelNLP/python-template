@@ -18,7 +18,7 @@ def require(condition: bool, message: str = "Requirement failed!"):
     condition : bool
         boolean condition
     message : str
-        custom message to add to the assert
+        custom message to add to the assertion
 
     """
     if not condition:
@@ -37,7 +37,7 @@ def require_one_in_all(
     collection_conditions : Iterable
         conditions to be tested
     message : str
-        custom message to add to the assert
+        custom message to add to the assertion
 
     """
     if not any(collection_conditions):
@@ -55,7 +55,7 @@ def require_all_in_all(
     collection_conditions : Iterable
         conditions to be tested
     message : str
-        custom message to add to the assert
+        custom message to add to the assertion
 
     """
     if not all(collection_conditions):
