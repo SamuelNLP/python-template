@@ -49,28 +49,3 @@ run the `kernprof` command on the script:
 kernprof -l script_to_profile.py
 python -m line_profiler script_to_profile.py.lprof
 ```
-
-## Jupyter notebook extensions
-
-```bash
-make install_jupyter
-```
-
-Activate:
-  
-    - jupyter-autopep8
-    - Spellchecker
-    - Notebook web notifications
-    - Skip traceback
-    - Scratchpad notebook extension
-    - Jupyter notebook snippets menu
-    - init_cell
-    - Execute time extension
-    - Variable Inspector
-    - Hinterland
-
-### Jupyter themes
-
-    - `jt -l` to see available themes
-    - `jt -t <name of theme>` to select a theme
-    - `jt -r` to revert to original theme
