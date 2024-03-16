@@ -1,10 +1,9 @@
-name: python-template
+name: Static Analysis
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,11 +22,8 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    - name: Test
-      run: make test_w_coverage
+    - name: Ruff
+      run: make ruff
 
-# todo: fix code coverage
-#    - name: Code Coverage
-#    - uses: codecov/codecov-action@v1
-#      with:
-#        fail_ci_if_error: true
+    - name: Mypy
+      run: make mypy
