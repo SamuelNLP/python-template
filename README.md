@@ -7,12 +7,11 @@ This is a skeleton repo to be used as a python template for future projects.
 
 **PRO TIP**: Install Ubuntu or whatever Linux-based system you like!
 
-We are using Python 3.10 and [Poetry](https://python-poetry.org/docs/basic-usage/) as the Python dependency management tool. All the currently required dependencies are in the `pyproject.toml` file.
+We are using Python 3.14 and [uv](https://docs.astral.sh/uv/) as the Python dependency management tool. All the currently required dependencies are in the `pyproject.toml` file.
 
 To set up the project:
-- If you haven't already, install Poetry by running: `curl -sSL https://install.python-poetry.org | python3 -`
-- After that, you can create the virtual environment with `poetry install`
-- Add the versioning plugin to Poetry running `poetry self add "poetry-dynamic-versioning[plugin]"`
+- If you haven't already, install uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- Sync dependencies and create the environment with `uv sync --all-extras`
 - Configure PyCharm to format docstrings with `numpy` style.
 
 ## Guidelines
@@ -21,13 +20,12 @@ To make things easier, we're also using Python's [ruff](https://github.com/astra
 
 [mypy](http://mypy-lang.org/) is used for type hinting.
 
-You can run `make mypy` for example to for type checking, or `make ruff` to run the linter and format the code for you.
+You can run `make mypy` for type checking, or `make ruff` to run the linter and format the code for you.
 
 When developing code for this repository, please be sure you install the [pre-commit hooks](https://pre-commit.com/#install):
 
 ```bash
-cd path/to/repo
-pre-commit install
+uv run pre-commit install
 ```
 
 Afterwards, whenever you try to commit changes, the pre-commit hooks

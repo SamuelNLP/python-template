@@ -2,8 +2,6 @@
 
 SHELL = /bin/bash
 PACKAGE_VERSION:=$(shell git describe --tags --abbrev=0)
-DOCKER_REGISTRY=europe-docker.pkg.dev/$(PROJECT_ID)/$(ARTIFACT_REGISTRY)
-IMAGE_NAME=ai-<name-placeholder>-server
 
 clean_dist:
 	rm -rf dist *.egg-info
@@ -21,17 +19,17 @@ clean_ruff:
 clean: clean_dist clean_mypy clean_tests clean_ruff
 
 test:
-	poetry run pytest -v -p no:cacheprovider tests
+	uv run pytest -v -p no:cacheprovider tests
 
 test_w_coverage:
-	poetry run pytest -v --junitxml=unit_test_report.xml --cov-report html --cov=<name-placeholder-underscore> tests/
+	uv run pytest -v --junitxml=unit_test_report.xml --cov-report html --cov=<name-placeholder-underscore> tests/
 
 package: clean_dist
-	poetry build
+	uv build --format wheel
 
 mypy:
-	poetry run mypy . --ignore-missing-imports --check-untyped-defs
+	uv run mypy .
 
 ruff:
-	poetry run ruff format .
-	poetry run ruff check . --fix
+	uv run ruff format .
+	uv run ruff check . --fix
